@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <form action="{{ url_for('crear_curso') }}" method="POST">
+        <label for="nombre">Nombre del curso:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <button type="submit">Crear curso</button>
+    </form>
+    
+    <h2>Todos los cursos</h2>
+    
+    <ul>
+        {% for curso in cursos %}
+            <li>
+                <a href="{{ url_for('vista_curso', curso_id=curso.id) }}">
+                    {{ curso.nombre }}
+                </a>
+            </li>
+        {% else %}
+            <li>No hay cursos registrados.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
