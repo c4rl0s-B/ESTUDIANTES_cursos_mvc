@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo estudiante</title>
+</head>
+<body>
+    <h1>Nuevo Estudiante</h1>
+
+    <form action="{{ url_for('crear_estudiante') }}" method="POST">
+        <label for="cursos_id">Curso:</label>
+        <select name="cursos_id" id="cursos_id" required>
+            <option value="">Selecciona un curso</option>
+            {% for curso in cursos %}
+                <option value="{{ curso.id }}">
+                    {{ curso.nombre }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <br>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" maxlength="45" required>
+
+        <br>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" name="apellido" id="apellido" maxlength="45" required>
+
+        <br>
+
+        <label for="edad">Edad:</label>
+        <input type="number" name="edad" id="edad" min="1" required>
+
+        <br>
+
+        <button type="submit">Crear</button>
+    </form>
+
+    <p><a href="{{ url_for('cursos') }}">Inicio</a></p>
+</body>
+</html>
