@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiantes curso</title>
+</head>
+<body>
+
+    <h1>Estudiantes de {{ curso.nombre }}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+
+        <tbody>
+                <tr>
+            {% for estudiante in estudiantes %}
+                    <td>{{ estudiante.nombre }}</td>
+                    <td>{{ estudiante.apellido }}</td>
+                    <td>{{ estudiante.edad }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Todavía no hay estudiantes en este curso.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="enlace" href="{{ url_for('nuevo_estudiante') }}">
+        Agregar estudiante
+    </a>
+
+    <br><br>
+
+    <a href="{{ url_for('cursos') }}">Inicio</a>
+
+</body>
+</html>
